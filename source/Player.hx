@@ -17,7 +17,6 @@ class Player extends FlxSprite
 		loadGraphic( AssetPaths.player__png, false, 16, 16);
 		setFacingFlip(FlxObject.LEFT, true, false);
 		setFacingFlip(FlxObject.RIGHT, false, false);
-		drag.x = drag.y = 1600;
 	}
 
 /**
@@ -84,6 +83,8 @@ class Player extends FlxSprite
 				mA = -90;
 			else if (down)
 				mA = 90;
+
+
 
 
 

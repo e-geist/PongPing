@@ -46,20 +46,16 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		#if flash
 		
-		path.set ("assets/data/playGround.oel", "assets/data/playGround.oel");
-		type.set ("assets/data/playGround.oel", AssetType.TEXT);
 		path.set ("assets/data/PongPing.oep", "assets/data/PongPing.oep");
 		type.set ("assets/data/PongPing.oep", AssetType.TEXT);
-		path.set ("assets/data/room01.oel", "assets/data/room01.oel");
-		type.set ("assets/data/room01.oel", AssetType.TEXT);
-		path.set ("assets/data/spacetiles.png", "assets/data/spacetiles.png");
-		type.set ("assets/data/spacetiles.png", AssetType.IMAGE);
-		path.set ("assets/data/spacetiles2.png", "assets/data/spacetiles2.png");
-		type.set ("assets/data/spacetiles2.png", AssetType.IMAGE);
+		path.set ("assets/data/standardlvl.oel", "assets/data/standardlvl.oel");
+		type.set ("assets/data/standardlvl.oel", AssetType.TEXT);
 		path.set ("assets/images/images-go-here.txt", "assets/images/images-go-here.txt");
 		type.set ("assets/images/images-go-here.txt", AssetType.TEXT);
 		path.set ("assets/images/player.png", "assets/images/player.png");
 		type.set ("assets/images/player.png", AssetType.IMAGE);
+		path.set ("assets/images/tiles.png", "assets/images/tiles.png");
+		type.set ("assets/images/tiles.png", AssetType.IMAGE);
 		path.set ("assets/music/music-goes-here.txt", "assets/music/music-goes-here.txt");
 		type.set ("assets/music/music-goes-here.txt", AssetType.TEXT);
 		path.set ("assets/sounds/sounds-go-here.txt", "assets/sounds/sounds-go-here.txt");
@@ -80,8 +76,6 @@ class DefaultAssetLibrary extends AssetLibrary {
 		#if (windows || mac || linux)
 		
 		var useManifest = false;
-		useManifest = true;
-		useManifest = true;
 		useManifest = true;
 		useManifest = true;
 		useManifest = true;
@@ -719,11 +713,7 @@ class DefaultAssetLibrary extends AssetLibrary {
 
 
 
-
-
 #elseif html5
-
-
 
 
 

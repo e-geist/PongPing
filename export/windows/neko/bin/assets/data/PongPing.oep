@@ -41,7 +41,7 @@
       <ExportMode>CSV</ExportMode>
     </LayerDefinition>
     <LayerDefinition xsi:type="EntityLayerDefinition">
-      <Name>player</Name>
+      <Name>entities</Name>
       <Grid>
         <Width>16</Width>
         <Height>16</Height>
@@ -55,7 +55,7 @@
   <Tilesets>
     <Tileset>
       <Name>tiles</Name>
-      <FilePath>spacetiles2.png</FilePath>
+      <FilePath>..\images\tiles.png</FilePath>
       <TileSize>
         <Width>16</Width>
         <Height>16</Height>

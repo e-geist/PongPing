@@ -25,7 +25,7 @@
   </CameraSize>
   <ExportCameraPosition>false</ExportCameraPosition>
   <LevelValueDefinitions>
-    <ValueDefinition xsi:type="IntValueDefinition" Name="room" Default="1" Min="0" Max="100" ShowSlider="false" />
+    <ValueDefinition xsi:type="IntValueDefinition" Name="room" Default="0" Min="0" Max="100" ShowSlider="false" />
   </LevelValueDefinitions>
   <LayerDefinitions>
     <LayerDefinition xsi:type="TileLayerDefinition">
@@ -41,7 +41,7 @@
       <ExportMode>CSV</ExportMode>
     </LayerDefinition>
     <LayerDefinition xsi:type="EntityLayerDefinition">
-      <Name>player</Name>
+      <Name>entities</Name>
       <Grid>
         <Width>16</Width>
         <Height>16</Height>
@@ -55,7 +55,7 @@
   <Tilesets>
     <Tileset>
       <Name>tiles</Name>
-      <FilePath>spacetiles2.png</FilePath>
+      <FilePath>..\images\tiles.png</FilePath>
       <TileSize>
         <Width>16</Width>
         <Height>16</Height>

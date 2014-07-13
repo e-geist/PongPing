@@ -30,10 +30,10 @@ class PlayState extends FlxState
 	override public function create():Void
 	{
 		//Load Map and Tiles
-		map = new FlxOgmoLoader("assets/data/room01.oel");
-		mCollider = map.loadTilemap("assets/data/spacetiles2.png", 16, 16, "walls");
-		mCollider.setTileProperties(1, FlxObject.NONE);
-		mCollider.setTileProperties(2, FlxObject.ANY);
+		map = new FlxOgmoLoader(AssetPaths.standardlvl__oel);
+		mCollider = map.loadTilemap(AssetPaths.tiles__png, 16, 16, "walls");
+		mCollider.setTileProperties(1,FlxObject.NONE);
+		mCollider.setTileProperties(2,FlxObject.ANY);
 		add(mCollider);
 
 		//Create Player
