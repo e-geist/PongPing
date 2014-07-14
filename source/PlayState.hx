@@ -2,6 +2,7 @@ package;
 
 
 import flixel.FlxG;
+import flixel.group.FlxTypedGroup;
 import flixel.FlxSprite;
 import flixel.FlxState;
 import flixel.FlxObject;
@@ -23,6 +24,11 @@ class PlayState extends FlxState
 	private var map:FlxOgmoLoader;
 	private var mCollider:FlxTilemap;
 
+	private var barLeft:Bar;
+	private var barRight:Bar;
+
+	private var barGroup:FlxTypedGroup<Bar>; 
+
 
 	/**
 	 * Function that is called up when to state is created to set it up. 
@@ -39,9 +45,18 @@ class PlayState extends FlxState
 		//Create Player
 		player = new Player();
 		
+		//Create Bars
+		barLeft = new Bar(0,0,true);
+		barRight = new Bar(0,0,false);
+		barGroup = new FlxTypedGroup<Bar>(2);
+		barGroup.add(barLeft);
+		barGroup.add(barRight);
+
 		//Set Position of Player
 		map.loadEntities(placeEntities, "entities");
 
+		add(barLeft);
+		add(barRight);
 		add(player);
 		super.create();
 
@@ -56,10 +71,17 @@ class PlayState extends FlxState
 	{
 		var x:Int = Std.parseInt(entityData.get("x"));
 		var y:Int = Std.parseInt(entityData.get("y"));
+		var id:Int = Std.parseInt(entityData.get("id"));
 		if (entityName == "player")
 		{
 			player.x = x;
 			player.y = y;
+		}
+
+		if (entityName == "bars")
+		{
+			id == 1 ? barLeft.x = x  : barRight.x = x;
+			id == 1 ? barLeft.y = y  :  barRight.y = y;
 		}
 
 	}
@@ -72,6 +94,9 @@ class PlayState extends FlxState
 	{
 
 		FlxDestroyUtil.destroy(player);
+		FlxDestroyUtil.destroy(barLeft);
+		FlxDestroyUtil.destroy(barRight);
+		FlxDestroyUtil.destroy(barGroup);
 		super.destroy();
 	}
 
@@ -81,8 +106,13 @@ class PlayState extends FlxState
 	override public function update():Void
 	{
 		super.update();
-
 		FlxG.collide(player, mCollider);
+		FlxG.collide(barGroup, mCollider);
+		barGroup.callAll("toggleImmovable");
+		FlxG.collide(barGroup, player);
+		barGroup.callAll("toggleImmovable");
+		if(!player.isOnScreen())
+			FlxG.switchState(new MenuState());
 	}
 
 }

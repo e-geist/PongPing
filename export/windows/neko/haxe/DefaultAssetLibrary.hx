@@ -50,6 +50,8 @@ class DefaultAssetLibrary extends AssetLibrary {
 		type.set ("assets/data/PongPing.oep", AssetType.TEXT);
 		path.set ("assets/data/standardlvl.oel", "assets/data/standardlvl.oel");
 		type.set ("assets/data/standardlvl.oel", AssetType.TEXT);
+		path.set ("assets/images/bar.png", "assets/images/bar.png");
+		type.set ("assets/images/bar.png", AssetType.IMAGE);
 		path.set ("assets/images/images-go-here.txt", "assets/images/images-go-here.txt");
 		type.set ("assets/images/images-go-here.txt", AssetType.TEXT);
 		path.set ("assets/images/player.png", "assets/images/player.png");
@@ -76,6 +78,7 @@ class DefaultAssetLibrary extends AssetLibrary {
 		#if (windows || mac || linux)
 		
 		var useManifest = false;
+		useManifest = true;
 		useManifest = true;
 		useManifest = true;
 		useManifest = true;
@@ -713,7 +716,9 @@ class DefaultAssetLibrary extends AssetLibrary {
 
 
 
+
 #elseif html5
+
 
 
 
