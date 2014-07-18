@@ -7,6 +7,7 @@ import flixel.text.FlxText;
 import flixel.ui.FlxButton;
 import flixel.util.FlxMath;
 import flixel.util.FlxDestroyUtil;
+import flixel.util.FlxSpriteUtil;
 
 using flixel.util.FlxSpriteUtil;
 
@@ -16,14 +17,32 @@ using flixel.util.FlxSpriteUtil;
 class MenuState extends FlxState
 {
 	private var btnPlay:FlxButton;
+	
+	//Menuimage
+	private var sprLogo:FlxSprite;
+
+	//Gamename
+	private var txtTitle:FlxText;
 	/**
 	 * Function that is called up when to state is created to set it up. 
 	 */
 	override public function create():Void
 	{
-		btnPlay = new FlxButton(0,0,"Play",clickPlay);
+		//Start game button
+		btnPlay = new FlxButton(0,400,"Play",clickPlay);
+		FlxSpriteUtil.screenCenter(btnPlay, true, false);
 		add(btnPlay);
-		btnPlay.screenCenter();
+
+		//Game title
+		txtTitle = new FlxText(0, 0, 0, "Pong Ping", 22);
+		FlxSpriteUtil.screenCenter(txtTitle, true, false);
+		add(txtTitle);
+
+		//Image
+		sprLogo = new FlxSprite(0,60);
+		sprLogo.loadGraphic(AssetPaths.menu__png, false, 320, 240);
+		FlxSpriteUtil.screenCenter(sprLogo, true, false);
+		add(sprLogo);
 		super.create();
 	}
 	
@@ -34,6 +53,8 @@ class MenuState extends FlxState
 	override public function destroy():Void
 	{
 		btnPlay = FlxDestroyUtil.destroy(btnPlay);
+		txtTitle = FlxDestroyUtil.destroy(txtTitle);
+		sprLogo = FlxDestroyUtil.destroy(sprLogo);
 		super.destroy();
 	}
 

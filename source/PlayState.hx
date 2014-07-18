@@ -14,19 +14,24 @@ import flixel.tile.FlxTilemap;
 import flixel.addons.editors.ogmo.FlxOgmoLoader;
 
 /**
- * A FlxState which can be used for the actual gameplay.
+ * PlayState
+ * Creates player object and moving bars
+ * Checks for collision
+ * If the player leaves the screen the game
+ * the game will change back to the menu
  */
 class PlayState extends FlxState
 {
-	//PlayerVariable
 	private var player:Player;
 
+	//needed for loading the map
 	private var map:FlxOgmoLoader;
 	private var mCollider:FlxTilemap;
 
 	private var barLeft:Bar;
 	private var barRight:Bar;
 
+	//needed to pair up the bars for collision
 	private var barGroup:FlxTypedGroup<Bar>; 
 
 
@@ -52,7 +57,7 @@ class PlayState extends FlxState
 		barGroup.add(barLeft);
 		barGroup.add(barRight);
 
-		//Set Position of Player
+		//Set Position of player and bars
 		map.loadEntities(placeEntities, "entities");
 
 		add(barLeft);
@@ -65,13 +70,15 @@ class PlayState extends FlxState
 
 	/**
 	 * Function that is called for every Entity 
-	 * and places it with the data from the Tilemap
+	 * and places it according to the tilemap data
 	 */
 	private function placeEntities(entityName:String, entityData:Xml):Void
 	{
+		//parse position of the Entity and Id
 		var x:Int = Std.parseInt(entityData.get("x"));
 		var y:Int = Std.parseInt(entityData.get("y"));
 		var id:Int = Std.parseInt(entityData.get("id"));
+		
 		if (entityName == "player")
 		{
 			player.x = x;
@@ -80,6 +87,7 @@ class PlayState extends FlxState
 
 		if (entityName == "bars")
 		{
+			//decide which bar to place
 			id == 1 ? barLeft.x = x  : barRight.x = x;
 			id == 1 ? barLeft.y = y  :  barRight.y = y;
 		}
@@ -87,8 +95,8 @@ class PlayState extends FlxState
 	}
 	
 	/**
-	 * Function that is called when this state is destroyed - you might want to 
-	 * consider setting all objects this state uses to null to help garbage collection.
+	 * Function that is called when this state is destroyed, 
+	 * destroys the player and bars
 	 */
 	override public function destroy():Void
 	{
@@ -102,6 +110,7 @@ class PlayState extends FlxState
 
 	/**
 	 * Function that is called once every frame.
+	 * Checks for collision and end of the game
 	 */
 	override public function update():Void
 	{
