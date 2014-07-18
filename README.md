@@ -12,6 +12,8 @@ Try to stay alive as long as possible.
 You will find a flash and a windows version in the export directory.
 Feel free to browse the source in the source directory.
 
+Playable version: http://www.fastswf.com/Xro7030#flagModal
+
 Todo in newer versions:
 - Implement score, incrementing each time you hit a bar
 - Show score when returning to menu
