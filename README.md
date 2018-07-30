@@ -1,6 +1,6 @@
 PongPing
 ========
-Author: vergyl4
+Author: e-geist
 Created: 10.7.2014
 State: Done
 
